@@ -1,4 +1,4 @@
-const z = require('zod')
+import { z } from 'zod'
 
 const movieSchema = z.object({
   title: z.string({
@@ -19,16 +19,11 @@ const movieSchema = z.object({
 })
 
 // eslint-disable-next-line space-before-function-paren
-function validatePartialMovie(movie) {
+export function validatePartialMovie(movie) {
   return movieSchema.partial().safeParse(movie)
 }
 
 // eslint-disable-next-line space-before-function-paren
-function validateMovie(movie) {
+export function validateMovie(movie) {
   return movieSchema.safeParse(movie)
-}
-
-module.exports = {
-  validateMovie,
-  validatePartialMovie
 }
